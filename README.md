@@ -74,7 +74,8 @@ notebooks/ 以下にある .ipynb ファイル（例：01_baseline.ipynb）を C
 
 ### 📦 コミット & Push（作業後）
 
-```bash
+```python
+!git pull origin main
 !git add notebooks/ src/ docs/
 !git commit -m "Update EDA notebook"
 !git push origin main
