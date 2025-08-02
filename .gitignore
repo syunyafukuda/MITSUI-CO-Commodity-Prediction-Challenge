@@ -11,6 +11,9 @@ __pycache__/
 kaggle.json
 *.env
 
+# 開発時に関するファイル
+/input/*
+
 # Distribution / packaging
 .Python
 build/
