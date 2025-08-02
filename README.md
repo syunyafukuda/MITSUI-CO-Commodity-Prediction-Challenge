@@ -46,18 +46,25 @@ drive.mount('/content/drive', force_remount=False)
 # 2. プロジェクトディレクトリに移動（必要に応じてパス調整）
 %cd "/content/drive/MyDrive/【Kaggle】MITSUI&CO. Commodity Prediction Challenge/MITSUI-CO-Commodity-Prediction-Challenge"
 
-# 3. GitHubから最新を取得
+# 3. GitHub 認証（Colab Secret経由で取得）
+GITHUB_USER = userdata.get('GITHUB_USER')
+GITHUB_TOKEN = userdata.get('GITHUB_TOKEN')
+
+os.system('git config --global credential.helper store')
+with open(os.path.expanduser('~/.git-credentials'), 'w') as f:
+    f.write(f'https://{GITHUB_USER}:{GITHUB_TOKEN}@github.com\n')
+
+# 4. GitHub から最新を取得
 !git pull origin main
 
-# 4. 認証情報ヘルパー（初回のみでOK、セッションが変わると再度必要）
-!git config --global credential.helper store
-
-# 5. kaggle API認証（Secret経由推奨、KAGGLE_USERNAME/KAGGLE_KEYをColab Secretに登録済みの場合）
+# 5. Kaggle API認証（Colab Secret経由で取得）
+KAGGLE_USERNAME = userdata.get('KAGGLE_USERNAME')
+KAGGLE_KEY = userdata.get('KAGGLE_KEY')
 os.makedirs('/root/.kaggle', exist_ok=True)
 with open('/root/.kaggle/kaggle.json','w') as f:
     json.dump({
-        "username": userdata.get('KAGGLE_USERNAME'),
-        "key":      userdata.get('KAGGLE_KEY')
+        "username": KAGGLE_USERNAME,
+        "key":      KAGGLE_KEY
     }, f)
 os.chmod('/root/.kaggle/kaggle.json', 0o600)
 ```
