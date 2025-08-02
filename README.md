@@ -37,18 +37,29 @@
 ### ✅ セッション起動時（最初の Colab セルに貼ることを推奨）
 
 ```python
-from google.colab import drive
+from google.colab import drive, userdata
+import json, os
+
+# 1. Google Driveをマウント
 drive.mount('/content/drive', force_remount=False)
 
-# プロジェクトルートへの移動（必要に応じてパスを修正）
-PROJECT = "/content/drive/MyDrive/【Kaggle】MITSUI&CO. Commodity Prediction Challenge/MITSUI-CO-Commodity-Prediction-Challenge"
-%cd "$PROJECT"
+# 2. プロジェクトディレクトリに移動（必要に応じてパス調整）
+%cd "/content/drive/MyDrive/【Kaggle】MITSUI&CO. Commodity Prediction Challenge/MITSUI-CO-Commodity-Prediction-Challenge"
 
-# GitHub から最新を pull（初回は clone、2回目以降は pull のみ）
+# 3. GitHubから最新を取得
 !git pull origin main
 
-# 認証情報（PAT）を永続化：credential helper をセット（初回のみ）
+# 4. 認証情報ヘルパー（初回のみでOK、セッションが変わると再度必要）
 !git config --global credential.helper store
+
+# 5. kaggle API認証（Secret経由推奨、KAGGLE_USERNAME/KAGGLE_KEYをColab Secretに登録済みの場合）
+os.makedirs('/root/.kaggle', exist_ok=True)
+with open('/root/.kaggle/kaggle.json','w') as f:
+    json.dump({
+        "username": userdata.get('KAGGLE_USERNAME'),
+        "key":      userdata.get('KAGGLE_KEY')
+    }, f)
+os.chmod('/root/.kaggle/kaggle.json', 0o600)
 ```
 ### 📘 ノートブック作成と編集 
 
