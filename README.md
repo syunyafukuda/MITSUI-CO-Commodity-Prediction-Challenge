@@ -1,2 +1,90 @@
-# MITSUI-CO-Commodity-Prediction-Challenge
-Kaggleのhttps://www.kaggle.com/competitions/mitsui-commodity-prediction-challengeコンペに参加
+# Mitsui Commodity Prediction Challenge – 個人プロジェクト
+
+## コンペ概要
+- [Kaggle: Mitsui Commodity Prediction Challenge](https://www.kaggle.com/competitions/mitsui-commodity-prediction-challenge)
+- コモディティ（商品）の将来価格を予測するAIモデルの開発コンペ
+- 各種市場データやマクロ経済指標等をもとに、予測精度を競う
+
+---
+
+## 開発フロー（全体像）
+1. **課題理解・データ把握**
+   - データセット内容確認・参考資料の整理
+2. **EDA（探索的データ分析）**
+   - 可視化・欠損/外れ値の確認・ドメイン知識反映
+3. **特徴量エンジニアリング**
+   - 新規特徴量の生成、既存特徴量の加工・選定
+4. **モデル設計・ベースライン構築**
+   - 機械学習/ディープラーニングベースライン、AutoMLで相場感取得
+5. **実験管理・チューニング**
+   - MLflow/W&Bによるパラメータ・精度管理、複数アプローチ比較
+6. **提出＆フィードバック**
+   - サブミッション自動化、CI/CD化
+7. **反省・方針見直し・最適化**
+   - ログ・記録を元にアプローチ修正、仮説検証サイクル
+
+---
+
+## 開発方針・理念
+- **最先端のAIツール・自動化技術を積極活用**
+  - Colab＋ChatGPT/Geminiによる開発効率化・アイデア拡張
+  - GitHubでのバージョン管理とCopilot活用による開発生産性向上
+  - MLflow/W&Bで全実験・パラメータ管理、結果の再現性確保
+  - AutoMLの活用で「ベースライン相場感」を把握し、手動工夫につなげる
+- **「再現性」「記録性」「可視化」を重視し、あとから振り返っても資産となる形で整理**
+- **個人参加ならではの柔軟な意思決定・高速なトライ＆エラーを実践**
+
+---
+
+## 利用ツール一覧
+- **Google Colab**：EDA、前処理、モデル開発
+- **Kaggle Notebook**：データ確認、ローカル提出用
+- **ChatGPT / Gemini**：コード・アイデア生成＆ブラッシュアップ
+- **GitHub + Copilot**：バージョン管理、自動補完＆CI/CD
+- **MLflow / Weights & Biases (W&B)**：実験管理・パラメータ/結果記録
+- **AutoMLツール（Kaggle, Vertex AI, AutoGluon, PyCaret等）**：ベースライン生成・効率化
+- **Notion/Obsidian/Google Docs（任意）**：進捗・アイデア・学びのメモ
+
+---
+
+## ディレクトリ構成（予定）
+```
+mitsui-commodity-challenge/
+│
+├── README.md                # 本ファイル
+├── notebooks/               # EDA・実験用ノートブック
+├── src/                     # Pythonスクリプト（前処理・学習・推論）
+├── input/                   # データ格納用（git管理対象外）
+├── output/                  # 生成物（予測値、可視化結果等）
+├── logs/                    # 実験ログ・パラメータ記録
+├── docs/                    # 方針・設計メモ・WBS等
+└── .gitignore               # 無視ファイル設定
+```
+
+---
+
+## 今後のTODO・進め方
+- [ ] 公式Starter Code/Notebookのクローン＆分析
+- [ ] データセットの内容・前処理方法の把握
+- [ ] EDA開始（notebooks/配下で実施・成果記録）
+- [ ] ベースライン（AutoML＋自作モデル）構築
+- [ ] 実験管理ツール（MLflow/W&B）の導入
+- [ ] 開発フロー・仮説検証サイクルのアップデート
+
+---
+
+## メモ・記録方針
+- 方針変更や仮説・気づきは随時READMEまたはdocs/配下に記録
+- 重要な実験のパラメータ・結果もMLflow/W&Bとあわせて要点記録
+- 失敗例・うまくいかなかったことも資産化
+
+---
+
+## 備考
+- プライベートリポジトリで管理し、外部公開はKaggle規約・公式ルールを遵守
+- プロジェクト進行にあたってChatGPT等の支援AIから得られたノウハウも積極記録
+
+---
+
+> **本READMEは随時アップデートし、開発の全過程・ナレッジの記録台帳とします。**
+
