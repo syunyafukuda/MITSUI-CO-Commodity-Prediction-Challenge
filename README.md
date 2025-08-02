@@ -64,6 +64,21 @@ notebooks/ 以下にある .ipynb ファイル（例：01_baseline.ipynb）を C
 最初の git push の際に、GitHub アカウント名 と Personal Access Token（PAT） の入力が求められます。 .gitconfig に保存されれば、次回から認証は自動化されます。 
 ※ただし Drive 上に PAT が平文で保存されるため、非公開フォルダに置くことを強く推奨します。
 
+### 📦 kaggle APIのColabへの接続
+
+```python
+from google.colab import userdata
+import json, os
+
+os.makedirs('/root/.kaggle', exist_ok=True)
+with open('/root/.kaggle/kaggle.json','w') as f:
+    json.dump({
+        "username": userdata.get('KAGGLE_USERNAME'),
+        "key":      userdata.get('KAGGLE_KEY')
+    }, f)
+os.chmod('/root/.kaggle/kaggle.json', 0o600)
+```
+
 ## 利用ツール一覧
 - **Google Colab**：EDA、前処理、モデル開発
 - **Kaggle Notebook**：データ確認、ローカル提出用
