@@ -12,7 +12,7 @@ kaggle.json
 *.env
 
 # 開発時に関するファイル
-# /input/*
+/input/*
 
 # Distribution / packaging
 .Python
