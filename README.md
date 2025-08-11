@@ -90,6 +90,26 @@ notebooks/ 以下にある .ipynb ファイル（例：01_baseline.ipynb）を C
 
     !git push origin main # ブランチ名がmainでない場合は修正
 ```
+
+#### bashターミナルの場合
+
+```python
+    cd "MITSUI-CO-Commodity-Prediction-Challenge"
+
+    mkdir -p notebooks/EDA #　まだディレクトリが作られていない場合
+
+    cp /content/EDA.ipynb notebooks/EDA/ # 'Your_EDA_Notebook.ipynb'を実際のファイル名に置き換え
+
+    git config user.email "fukudashunya.h14@gmail.com" # あなたのGitHub登録メールアドレスに置き換え
+    git config user.name "syunyafukuda" # あなたのGitHubユーザー名に置き換え
+
+    git add notebooks/EDA/EDA.ipynb # コピーしたノートブックファイル名に置き換え
+
+    git commit -m "初期のEDA" # コミットメッセージは適切に変更
+
+    git push origin main # ブランチ名がmainでない場合は修正
+```
+
 最初の git push の際に、GitHub アカウント名 と Personal Access Token（PAT） の入力が求められます。 .gitconfig に保存されれば、次回から認証は自動化されます。 
 ※ただし Drive 上に PAT が平文で保存されるため、非公開フォルダに置くことを強く推奨します。
 
